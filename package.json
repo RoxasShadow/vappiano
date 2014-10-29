@@ -1,0 +1,9 @@
+{
+  "name": "vappiano",
+  "version": "0.0.1",
+  "private": true,
+  "dependencies": {
+    "http-proxy": "~1.6.0",
+    "geoip": "~0.5.5"
+  }
+}
