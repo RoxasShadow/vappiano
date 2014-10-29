@@ -36,7 +36,7 @@ http.createServer(function(req, res) {
       target = 'http://www.mozestudio.com';
   }
 
-  if(proxy) {
+  if(options.proxy) {
     proxy.web(req, res, { target: target });
   }
   else {
