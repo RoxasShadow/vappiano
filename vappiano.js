@@ -26,6 +26,8 @@ http.createServer(function(req, res) {
   var remoteAddress = req.connection.remoteAddress;
   var country = new geoip.Country(options.geoip);
   var countryObj = country.lookupSync(remoteAddress);
+  if(!countryObj)
+    countryObj = { country_code: '' };
 
   var target = '';
   switch(countryObj.country_code) {
@@ -41,9 +43,9 @@ http.createServer(function(req, res) {
   }
   else {
     res.writeHead(301, { 'Location': target });
+    res.end();
   }
 
-  res.end();
 }).listen(options.port, function() {
   console.log('vappiano started on port ' + options.port + ' in ' + (options.proxy ? 'proxy' : 'redirector') + ' mode.');
 });
